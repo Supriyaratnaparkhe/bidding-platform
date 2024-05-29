@@ -1,0 +1,27 @@
+version: '4.30'
+# 3.8
+
+services:
+  web:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      - PORT=3000
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=SupriyaRatnaparkhe
+      - DB_PASSWORD=02_09_2001Spr
+      - DB_NAME=bidding_platform
+      - JWT_SECRET='HiSupriya'
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: SupriyaRatnaparkhe
+      POSTGRES_PASSWORD: 02_09_2001Spr
+      POSTGRES_DB: bidding_platform
+    ports:
+      - '5432:5432'
